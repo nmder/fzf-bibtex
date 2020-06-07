@@ -11,11 +11,11 @@ func EntryToFZF(entry map[string]string) string {
 	s := ""
 	switch entry["type"] {
 	case "article":
+		s += "'" + entry["title"] + "'"
+		s += " "
 		s += entry["author"]
 		s += " "
 		s += "(" + entry["year"] + ")"
-		s += " "
-		s += "'" + entry["title"] + "'"
 		s += ", "
 		s += "\033[3m"
 		s += entry["journal"]
@@ -29,6 +29,9 @@ func EntryToFZF(entry map[string]string) string {
             s += entry["pages"]
         }
 	case "book":
+		s += "\033[3m"
+		s += entry["title"]
+		s += "\033[0m"
 		if _, ok := entry["editor"]; ok {
 			s += entry["editor"]
 			if strings.Contains(entry["editor"], " & ") {
@@ -42,9 +45,6 @@ func EntryToFZF(entry map[string]string) string {
 		s += " "
 		s += "(" + entry["year"] + ")"
 		s += " "
-		s += "\033[3m"
-		s += entry["title"]
-		s += "\033[0m"
         if entry["address"] != ""  {
             s += ", "
             s += entry["address"]
@@ -52,11 +52,12 @@ func EntryToFZF(entry map[string]string) string {
             s += entry["publisher"]
         }
 	case "incollection", "inproceedings", "inbook":
+		s += "'" + entry["title"] + "'"
+        s += " "
 		s += entry["author"]
 		s += " "
 		s += "(" + entry["year"] + ")"
 		s += " "
-		s += "'" + entry["title"] + "'"
 		s += " in "
 		if _, ok := entry["editor"]; ok {
 			s += entry["editor"]
@@ -81,20 +82,22 @@ func EntryToFZF(entry map[string]string) string {
             s += entry["pages"]
         }
 	case "unpublished":
+		s += "'" + entry["title"] + "'"
 		s += entry["author"]
 		s += " "
 		s += "(" + entry["year"] + ")"
 		s += " "
-		s += "'" + entry["title"] + "'"
 		s += ", unpublished manuscript"
 	case "phdthesis", "mastersthesis":
+		s += "'" + entry["title"] + "'"
 		s += entry["author"]
 		s += " "
 		s += "(" + entry["year"] + ")"
 		s += " "
-		s += "'" + entry["title"] + "'"
 		s += ", " + entry["school"]
 	default:
+		s += "'" + entry["title"] + "'"
+		s += " "
 		if _, ok := entry["editor"]; ok {
 			s += entry["editor"]
 			if strings.Contains(entry["editor"], " & ") {
@@ -107,8 +110,6 @@ func EntryToFZF(entry map[string]string) string {
 		}
 		s += " "
 		s += "(" + entry["year"] + ")"
-		s += " "
-		s += "'" + entry["title"] + "'"
 	}
 	// add type and bibtex key
 	s += " "
