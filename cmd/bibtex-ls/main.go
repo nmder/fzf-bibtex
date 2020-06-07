@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"strings"
-	"github.com/msprev/fzf-bibtex/cache"
-	"github.com/msprev/fzf-bibtex/format"
-	"github.com/msprev/fzf-bibtex/startup"
+	"github.com/nmder/fzf-bibtex/cache"
+	"github.com/nmder/fzf-bibtex/format"
+	"github.com/nmder/fzf-bibtex/startup"
 )
 
 const usage string = `bibtex-ls [-cache=...] [file1.bib file2.bib ...]

@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/msprev/fzf-bibtex/cache"
-	"github.com/msprev/fzf-bibtex/format"
-	"github.com/msprev/fzf-bibtex/startup"
+	"github.com/nmder/fzf-bibtex/cache"
+	"github.com/nmder/fzf-bibtex/format"
+	"github.com/nmder/fzf-bibtex/startup"
 	"os"
 	"strings"
 )

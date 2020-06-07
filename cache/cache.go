@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"crypto/sha256"
 	"fmt"
-	"github.com/msprev/fzf-bibtex/bibtex"
+	"github.com/nmder/fzf-bibtex/bibtex"
 	"os"
 	"path/filepath"
 	"sort"
